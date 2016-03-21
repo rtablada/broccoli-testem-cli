@@ -1,4 +1,5 @@
 var tinylr = require('tiny-lr');
+var Testem = require('testem');
 
 exports.serve = serve;
 function serve (broccoli, builder, options) {
@@ -7,6 +8,9 @@ function serve (broccoli, builder, options) {
   var server = broccoli.server.serve(builder, options);
 
   var livereloadServer = new tinylr.Server;
+  var testem = new Testem();
+  testem.startDev();
+
   livereloadServer.listen(options.liveReloadPort, function (err) {
     if(err) {
       throw err;
@@ -21,5 +25,6 @@ function serve (broccoli, builder, options) {
 
   server.watcher.on('change', function(results) {
     liveReload();
+    testem.restart();
   });
 }
