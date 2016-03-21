@@ -1,6 +1,6 @@
 {
   "name": "broccoli-testem-cli",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A CLI runner for Broccoli that reenables Live Reload.",
   "main": "index.js",
   "repository": {
